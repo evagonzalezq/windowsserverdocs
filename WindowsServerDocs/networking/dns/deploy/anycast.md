@@ -141,6 +141,7 @@ Use the following Windows PowerShell commands on VMs to configure routing.
 1.	Gateway
 ```PowerShell
 Install-WindowsFeature RemoteAccess -IncludeManagementTools
+Install-WindowsFeature Routing -IncludeManagementTools
 Install-RemoteAccess -VpnType RoutingOnly
 Add-BgpRouter -BgpIdentifier “10.10.10.254” -LocalASN 8075
 Add-BgpPeer -Name "DC001" -LocalIPAddress 10.10.10.254 -PeerIPAddress 10.10.10.1 -PeerASN 65511 –LocalASN 8075
@@ -150,6 +151,7 @@ Add-BgpPeer -Name "DC002" -LocalIPAddress 10.10.10.254 -PeerIPAddress 10.10.10.2
 2.	DC001
 ```PowerShell
 Install-WindowsFeature RemoteAccess -IncludeManagementTools
+Install-WindowsFeature Routing -IncludeManagementTools
 Install-RemoteAccess -VpnType RoutingOnly
 Add-BgpRouter -BgpIdentifier “10.10.10.1” -LocalASN 65511
 Add-BgpPeer -Name "Labgw" -LocalIPAddress 10.10.10.1 -PeerIPAddress 10.10.10.254 -PeerASN 8075 –LocalASN 65511
@@ -159,6 +161,7 @@ Add-BgpCustomRoute -Network 51.51.51.0/24
 3.	DC002
 ```PowerShell
 Install-WindowsFeature RemoteAccess -IncludeManagementTools
+Install-WindowsFeature Routing -IncludeManagementTools
 Install-RemoteAccess -VpnType RoutingOnly
 Add-BgpRouter -BgpIdentifier "10.10.10.2" -LocalASN 65511
 Add-BgpPeer -Name "Labgw" -LocalIPAddress 10.10.10.2 -PeerIPAddress 10.10.10.254 -PeerASN 8075 –LocalASN 65511
